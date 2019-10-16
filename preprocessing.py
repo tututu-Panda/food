@@ -212,8 +212,8 @@ trueOutFile = "true/tureOut.txt"
 # segTestComment(testFile, stopwords, testOutFile)
 # addLabelToCsv(trainInFile, stopwords, trainLabel, devFile)
 # segTestComment(testFile, stopwords, predFile)
-# trainModel(trainLabel, devLabelFile, saveModelFile)
+addLabelToFile(trainInFile, stopwords, trainLabel, devLabelFile, 1200, 4)
+trainModel(trainLabel, devLabelFile, saveModelFile)
 testModel(devLabelFile, saveModelFile)
 predictModel(predFile, saveModelFile, predOutFile)
 
-# addLabelToFile(trainInFile, stopwords, trainLabel, devLabelFile, 1300, 2)
