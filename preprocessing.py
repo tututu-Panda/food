@@ -141,13 +141,14 @@ def getTestDataFromCsv(file, stopwords, outFile):
     writeFile.close()
 
 
-def trainModel(trainFile, saveModelFile):
+def trainModel(trainFile, devFile, saveModelFile):
     """
     训练fasttext模型
     """
     # model = fasttext.train_supervised("train_label.txt", lr=0.1, dim=100, epoch=5, word_ngrams=2, loss='softmax')
-    model = fasttext.train_supervised(trainFile, lr=0.7, dim=100, epoch=25, word_ngrams=2, loss='hs', thread=6)
+    # model = fasttext.train_supervised(trainFile, lr=0.7, dim=100, epoch=25, word_ngrams=2, loss='hs', thread=6)
     # model.save_model("model_file.bin")
+    model = fasttext.train_supervised(input=trainFile,autotuneValidationFile=devFile)
     model.save_model(saveModelFile)
 
 
@@ -211,8 +212,8 @@ trueOutFile = "true/tureOut.txt"
 # segTestComment(testFile, stopwords, testOutFile)
 # addLabelToCsv(trainInFile, stopwords, trainLabel, devFile)
 # segTestComment(testFile, stopwords, predFile)
-# trainModel(trainLabel, saveModelFile)
-# testModel(devFile, saveModelFile)
-# predictModel(predFile, saveModelFile, predOutFile)
+# trainModel(trainLabel, devLabelFile, saveModelFile)
+testModel(devLabelFile, saveModelFile)
+predictModel(predFile, saveModelFile, predOutFile)
 
-addLabelToFile(trainInFile, stopwords, trainLabel, devLabelFile, 1300, 2)
+# addLabelToFile(trainInFile, stopwords, trainLabel, devLabelFile, 1300, 2)
