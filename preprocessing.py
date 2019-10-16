@@ -1,5 +1,6 @@
-import random
+#coding=utf-8
 
+import random
 import pandas as pd
 import numpy as np
 import jieba
@@ -212,7 +213,7 @@ trueOutFile = "true/tureOut.txt"
 # segTestComment(testFile, stopwords, testOutFile)
 # addLabelToCsv(trainInFile, stopwords, trainLabel, devFile)
 # segTestComment(testFile, stopwords, predFile)
-addLabelToFile(trainInFile, stopwords, trainLabel, devLabelFile, 1200, 4)
+addLabelToFile(trainInFile, stopwords, trainLabel, devLabelFile, 1400, 2)
 trainModel(trainLabel, devLabelFile, saveModelFile)
 testModel(devLabelFile, saveModelFile)
 predictModel(predFile, saveModelFile, predOutFile)
